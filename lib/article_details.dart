@@ -69,11 +69,13 @@ class _ArticleDetailsState extends State<ArticleDetails> {
                     body: json.encode(finalProd.toJson()),
                     headers: {
                       'Content-Type': 'application/json'
-                    }).then((onValue) {
-                  Scaffold.of(context).showSnackBar(SnackBar(
-                    content: Text('article Updated successfully!!'),
-                    backgroundColor: Colors.green[700],
-                  ));
+                    }).whenComplete(() {
+                  Scaffold.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('article Updated successfully!!'),
+                      backgroundColor: Colors.green[700],
+                    ),
+                  );
                 });
               },
             )

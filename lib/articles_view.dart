@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:ipsas_jee/add_article.dart';
 import 'package:ipsas_jee/article_details.dart';
 import 'package:ipsas_jee/model/product.dart';
 
@@ -18,6 +19,13 @@ class _ArticlesViewState extends State<ArticlesView> {
         appBar: AppBar(
           title: Text('Mes articles'),
           centerTitle: true,
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            MaterialPageRoute _route=MaterialPageRoute(builder: (context)=> AddArticle());
+            Navigator.of(context).push(_route);
+          },
+          child: Icon(Icons.add),
         ),
         body: FutureBuilder(
             future: getArticles,
@@ -120,7 +128,8 @@ class _ArticlesViewState extends State<ArticlesView> {
                                                 .showSnackBar(SnackBar(
                                               content: Text(
                                                   'article deleted successfully!!'),
-                                                  backgroundColor: Colors.green[700],
+                                              backgroundColor:
+                                                  Colors.green[700],
                                             ));
                                           });
                                         },
